@@ -16,19 +16,19 @@ def mainloop():
 
 		if 11 <= int(datetime.today().hour) < 14:
 			print("Business hours(営業時間)")
-			with ProcessPoolExecutor(max_workers=3) as executor:
+			with ProcessPoolExecutor(max_workers=2) as executor:
 				executor.submit(GET_Narashino1)
 				executor.submit(GET_Narashino2)
 				executor.submit(GET_Tsudanuma)
 			time.sleep(np.random.randint(5,10))
 			mainloop()
 		else:
-			print("Not in Service")
+			print("Not in Service(営業時間外)")
 			# 時間外処理を入れる
 			loop_out()
 
 	else:
-		print("Not in Service")
+		print("Not in Service(曜日外)")
 		# 時間外処理を入れる
 		loop_out()
 
